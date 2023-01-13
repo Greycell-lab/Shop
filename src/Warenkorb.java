@@ -6,6 +6,9 @@ public class Warenkorb {
     private HashMap<Artikel, Integer> warenkorb = new HashMap<>();
     private static boolean passed;
     private static int auswahl, menge;
+    public Warenkorb(){
+        Artikel.fillArtikelList();
+    }
     public double getSumme(){
         double summe = 0;
         for(var x : this.warenkorb.keySet()) summe += x.getVerkaufspreis() * warenkorb.get(x);

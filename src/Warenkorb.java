@@ -15,8 +15,7 @@ public class Warenkorb {
         if(warenkorb.size()==0) System.out.println("Warenkorb ist leer");
         else {
             System.out.println("ID\t\tArtikel\t\tMenge");
-            for (var x : this.warenkorb.keySet())
-                System.out.println(x.getId() + "\t\t" + x.getBezeichnung() + "\t\t" + warenkorb.get(x) + "\t\t" + String.format("%.2f", (x.getVerkaufspreis() * warenkorb.get(x))) + "€");
+            for (var x : this.warenkorb.keySet()) System.out.println(x.getId() + "\t\t" + x.getBezeichnung() + "\t\t" + warenkorb.get(x) + "\t\t" + String.format("%.2f", (x.getVerkaufspreis() * warenkorb.get(x))) + "€");
             System.out.println("Gesamt:\t\t\t\t\t\t" + String.format("%.2f", getSumme()) + "€");
         }
     }
@@ -102,5 +101,4 @@ public class Warenkorb {
     public HashMap<Artikel, Integer> getWarenkorb(){
         return warenkorb;
     }
-
 }

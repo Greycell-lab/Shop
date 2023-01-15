@@ -50,7 +50,7 @@ public class Warenkorb {
             case 2 -> kaufenArtikel();
             case 3 -> entferneArtikel();
             case 4 -> showWarenkorb();
-            case 5 -> Bestellung.bestellungAbschicken(this);
+            case 5 -> new Bestellung(this);
             case 6 -> leaveShop();
         }
     }

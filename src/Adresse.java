@@ -1,22 +1,24 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class Adresse {
+public class Adresse implements Serializable {
     private static boolean passed;
     private String straße;
     private int hausnummer;
     private int plz;
     private String ort;
-    private Kunde kunde;
-    private ArrayList<Adresse> adressen = new ArrayList<>();
+    private final Kunde kunde;
+    private final ArrayList<Adresse> adressen = new ArrayList<>();
     public Adresse(){
         kunde = new Kunde();
         adresseEingeben();
         adressen.add(this);
         kunde.setAdresse(this);
+        kunde.serializeKunde();
     }
-    public Adresse adresseEingeben(){
+    public void adresseEingeben(){
         System.out.println("Ihre Adresse:");
         do {
             try{
@@ -44,7 +46,6 @@ public class Adresse {
                 passed = false;
             }
         }while(!passed);
-        return this;
     }
     @Override
     public String toString(){

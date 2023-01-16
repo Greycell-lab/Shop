@@ -29,11 +29,11 @@ public class Kunde implements Serializable {
     public void setNachname(String nachname) {
         this.nachname = nachname;
     }
-    public void serializeKunde(){
+    public static void serializeKunde(){
         try {
             FileOutputStream fileOut = new FileOutputStream("Kunden.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(this);
+            out.writeObject(kunden);
             out.close();
             fileOut.close();
         }catch(FileNotFoundException e){
@@ -43,15 +43,15 @@ public class Kunde implements Serializable {
         }
     }
     public static void deserializeKunde(){
-        Kunde kunde = new Kunde();
+        Kunde kunde;
         try{
             FileInputStream fileIn = new FileInputStream("Kunden.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            kunde = (Kunde)in.readObject();
+            kunden = (ArrayList<Kunde>) in.readObject();
         }catch(FileNotFoundException e){
             System.out.println("Datei nicht gefunden.");
         }catch(IOException e){
-            System.out.println(e);
+            System.out.println("Etwas ist schief gelaufen.");
         }catch(ClassNotFoundException e){
             System.out.println("Klasse nicht gefunden.");
         }

@@ -45,7 +45,8 @@ public class Kunde implements Serializable {
         try{
             FileInputStream fileIn = new FileInputStream("Kunden.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            if(in.readObject() instanceof ArrayList<?>) kunden = (ArrayList) in.readObject();
+            Object test = in.readObject();
+            if(test instanceof ArrayList<?>) kunden = (ArrayList)test;
             fileIn.close();
             in.close();
         }catch(FileNotFoundException e){
@@ -57,6 +58,10 @@ public class Kunde implements Serializable {
         }catch(IOException e){
             System.out.println(e);
         }
+    }
+    public static void kundenAusgabe(){
+        System.out.println("Vorname\tNachname\tStraße\t\t\t\t\tOrt");
+        for(var x : kunden) System.out.println(x.getName() + "\t" + x.getNachname() + "\t\t" + x.adresse.getStraße() + " " + x.adresse.getHausnummer() + "\t\t\t" + x.adresse.getPlz() + " " + x.adresse.getOrt());
     }
     public static ArrayList<Kunde> getKunden(){
         return kunden;

@@ -3,6 +3,6 @@ public class Main {
         Warenkorb warenkorb = new Warenkorb();
         Kunde.deserializeKunde();
         //while(true) warenkorb.showMenu();
-        for(var x : Kunde.getKunden()) System.out.println(x.getName());
+        Kunde.kundenAusgabe();
     }
 }

@@ -51,4 +51,20 @@ public class Adresse implements Serializable {
     public String toString(){
         return "Name: " + kunde.getName() + " " + kunde.getNachname() + "\nStraße: " + this.straße + " " + this.hausnummer + "\nPLZ Ort: " + plz + " " + ort;
     }
+
+    public String getStraße() {
+        return straße;
+    }
+
+    public int getHausnummer() {
+        return hausnummer;
+    }
+
+    public int getPlz() {
+        return plz;
+    }
+
+    public String getOrt() {
+        return ort;
+    }
 }

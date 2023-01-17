@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Kunde implements Serializable {
     private String name;
@@ -43,23 +42,23 @@ public class Kunde implements Serializable {
         }
     }
     public static void deserializeKunde(){
-        Kunde kunde;
         try{
             FileInputStream fileIn = new FileInputStream("Kunden.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            kunden = (ArrayList<Kunde>) in.readObject();
+            if(in.readObject() instanceof ArrayList<?>) kunden = (ArrayList) in.readObject();
+            fileIn.close();
+            in.close();
         }catch(FileNotFoundException e){
             System.out.println("Datei nicht gefunden.");
-        }catch(IOException e){
-            System.out.println("Etwas ist schief gelaufen.");
+        }catch(EOFException e){
+            System.out.println(e.getMessage());
         }catch(ClassNotFoundException e){
             System.out.println("Klasse nicht gefunden.");
+        }catch(IOException e){
+            System.out.println(e);
         }
     }
     public static ArrayList<Kunde> getKunden(){
         return kunden;
-    }
-    public Adresse getAdresse(){
-        return adresse;
     }
 }
